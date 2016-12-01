@@ -1,1 +1,1 @@
-include ':app', ':app_rxjava'
+include ':app', ':app_rxjava', ':app_rxjava_mvp', ':app_rxjava_mvp_butterknife', ':app_rxjava_mvp_butterknife_dagger2'

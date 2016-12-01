@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .client(new OkHttpClient())
                     .build();
             WeatherService weatherService = retrofit.create(WeatherService.class);
-            weatherService.getWeather(AppKey, "朝阳", "北京")
+            loadWeatherData(weatherService);
+            /*weatherService.getWeather(AppKey, "朝阳", "北京")
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<WeatherBean>() {
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             showLoadSuccess();
                         }
-                    });
+                    });*/
         }
     }
 
@@ -102,6 +103,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showLoadFailed() {
         show.setVisibility(View.INVISIBLE);
         progress.setVisibility(View.INVISIBLE);
+    }
+
+    public void loadWeatherData(WeatherService weatherService){
+        weatherService.getWeather(AppKey, "朝阳", "北京")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<WeatherBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        showLoadFailed();
+                    }
+
+                    @Override
+                    public void onNext(WeatherBean weatherBean) {
+                        final WeatherBean wB = weatherBean;
+                        List<WeatherBean.ResultBean.FutureBean> futureList = wB.getResult().get(0).getFuture();
+                        for (int i = 0; i < futureList.size(); i++) {
+                            list.add("\n" + futureList.get(i).getDate() + "\n"
+                                    + "白天：" + futureList.get(i).getDayTime() + "\n"
+                                    + "夜间：" + futureList.get(i).getNight() + "\n"
+                                    + futureList.get(i).getTemperature() + "\n"
+                                    + futureList.get(i).getWeek() + "\n"
+                                    + futureList.get(i).getWind() + "\n");
+                        }
+                        show.setAdapter(new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, list));
+
+
+                        showLoadSuccess();
+                    }
+                });
     }
 }
 

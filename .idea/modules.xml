@@ -3,8 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVP_Learn.iml" filepath="$PROJECT_DIR$/MVP_Learn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MVP_Learn.iml" filepath="$PROJECT_DIR$/MVP_Learn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app_rxjava/app_rxjava.iml" filepath="$PROJECT_DIR$/app_rxjava/app_rxjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_rxjava/app_rxjava.iml" filepath="$PROJECT_DIR$/app_rxjava/app_rxjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_rxjava_mvp/app_rxjava_mvp.iml" filepath="$PROJECT_DIR$/app_rxjava_mvp/app_rxjava_mvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_rxjava_mvp_butterknife/app_rxjava_mvp_butterknife.iml" filepath="$PROJECT_DIR$/app_rxjava_mvp_butterknife/app_rxjava_mvp_butterknife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_rxjava_mvp_butterknife_dagger2/app_rxjava_mvp_butterknife_dagger2.iml" filepath="$PROJECT_DIR$/app_rxjava_mvp_butterknife_dagger2/app_rxjava_mvp_butterknife_dagger2.iml" />
     </modules>
   </component>
 </project>
