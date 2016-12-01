@@ -1,5 +1,6 @@
 package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements IWeatherView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        AppApplication.getsInstance().getAppComponent().inject(this);
         presenter = new WeatherPresenter(new WeatherModel(), this);
         initShow();
     }
