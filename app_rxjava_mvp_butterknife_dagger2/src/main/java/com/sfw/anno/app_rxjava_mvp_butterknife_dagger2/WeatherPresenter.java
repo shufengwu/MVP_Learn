@@ -1,8 +1,5 @@
 package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import rx.Observer;
 
 /**

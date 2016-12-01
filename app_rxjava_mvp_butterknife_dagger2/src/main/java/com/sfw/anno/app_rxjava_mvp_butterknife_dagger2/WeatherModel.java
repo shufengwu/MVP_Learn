@@ -3,10 +3,8 @@ package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import javax.inject.Inject;
+
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -19,17 +17,14 @@ public class WeatherModel implements IWeatherModel {
 
     private final String AppKey = "12c5afd699940";
 
+    @Inject
+    WeatherService weatherService;
+    public WeatherModel() {
+        DaggerWeatherComponent.builder().weatherModule(new WeatherModule()).build().inject(this);
+    }
 
     @Override
     public Observable<WeatherBean> loadW() {
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://apicloud.mob.com")
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(new OkHttpClient())
-                .build();
-        WeatherService weatherService = retrofit.create(WeatherService.class);
         Observable<WeatherBean> res = weatherService.getWeather(AppKey, "朝阳", "北京")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

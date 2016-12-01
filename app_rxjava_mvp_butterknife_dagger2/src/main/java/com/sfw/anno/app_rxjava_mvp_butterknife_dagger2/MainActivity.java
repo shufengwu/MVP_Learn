@@ -1,6 +1,5 @@
 package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +8,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,13 +24,14 @@ public class MainActivity extends AppCompatActivity implements IWeatherView {
     @BindView(R.id.progess)
     ProgressBar progress;
     WeatherPresenter presenter;
+    @Inject
+    WeatherService weatherService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        AppApplication.getsInstance().getAppComponent().inject(this);
         presenter = new WeatherPresenter(new WeatherModel(), this);
         initShow();
     }

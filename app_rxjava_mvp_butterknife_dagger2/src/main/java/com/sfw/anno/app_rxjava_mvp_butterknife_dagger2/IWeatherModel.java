@@ -1,5 +1,7 @@
 package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 
+import com.sfw.anno.app_rxjava_mvp_butterknife_dagger2.WeatherBean;
+
 import java.util.List;
 
 import rx.Observable;

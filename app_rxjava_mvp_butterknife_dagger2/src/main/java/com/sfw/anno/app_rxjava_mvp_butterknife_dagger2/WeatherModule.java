@@ -1,5 +1,7 @@
 package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 
+import com.sfw.anno.app_rxjava_mvp_butterknife_dagger2.WeatherService;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -16,6 +18,10 @@ public class WeatherModule {
     private String base_url = "http://apicloud.mob.com";
 
     @Provides
+    public String provideBaseUrl(){
+        return this.base_url;
+    }
+    @Provides
     public WeatherService provideWeatherService(Retrofit retrofit){
         return retrofit.create(WeatherService.class);
     }
@@ -29,11 +35,6 @@ public class WeatherModule {
                 .client(okHttpClient)
                 .build();
         return retrofit;
-    }
-
-    @Provides
-    public String provideBaseUrl(){
-        return base_url;
     }
 
     @Provides
