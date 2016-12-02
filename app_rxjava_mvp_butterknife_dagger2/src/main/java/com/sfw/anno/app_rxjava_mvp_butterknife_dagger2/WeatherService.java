@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 /**
- * Created by wushufeng on 2016/11/30.
+ *
  */
 
 public interface WeatherService {

@@ -3,18 +3,19 @@ package com.sfw.anno.app_rxjava_mvp_butterknife_dagger2;
 import rx.Observer;
 
 /**
- * Created by Shufeng.Wu on 2016/12/1.
+ * 实现P层接口
  */
 
-public class WeatherPresenter {
-    private IWeatherView view;
-    private IWeatherModel mode;
+public class WeatherPresenter implements WeatherContract.IWeatherPresenter {
+    private WeatherContract.IWeatherView view;
+    private WeatherContract.IWeatherModel mode;
 
-    public WeatherPresenter(IWeatherModel mode, IWeatherView view) {
+    public WeatherPresenter(WeatherContract.IWeatherModel mode, WeatherContract.IWeatherView view) {
         this.mode = mode;
         this.view = view;
     }
 
+    @Override
     public void load(){
         view.showLoadStart();
         mode.loadW().subscribe(new Observer<WeatherBean>(){

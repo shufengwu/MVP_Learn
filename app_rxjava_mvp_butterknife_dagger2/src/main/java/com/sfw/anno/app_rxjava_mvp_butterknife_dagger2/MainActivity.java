@@ -15,8 +15,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-public class MainActivity extends AppCompatActivity implements IWeatherView {
+/**
+ *  MainActivity实现V层接口
+ */
+public class MainActivity extends AppCompatActivity implements WeatherContract.IWeatherView {
     private final String AppKey = "12c5afd699940";
 
     @BindView(R.id.show)

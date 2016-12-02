@@ -10,7 +10,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by Shufeng.Wu on 2016/12/1.
+ *
  */
 @Module
 public class WeatherModule {

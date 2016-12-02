@@ -10,15 +10,17 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Shufeng.Wu on 2016/12/1.
+ * 实现M层接口
  */
 
-public class WeatherModel implements IWeatherModel {
+public class WeatherModel implements WeatherContract.IWeatherModel {
 
     private final String AppKey = "12c5afd699940";
 
+    //WeatherService对象的注入
     @Inject
     WeatherService weatherService;
+
     public WeatherModel() {
         DaggerWeatherComponent.builder().weatherModule(new WeatherModule()).build().inject(this);
     }
@@ -32,6 +34,11 @@ public class WeatherModel implements IWeatherModel {
         return res;
     }
 
+    /**
+     * 将返回的JavaBean类对象转化为List <String>
+     * @param weatherBean
+     * @return
+     */
     @Override
     public List<String> weatherBean2List(WeatherBean weatherBean) {
         List<String> list = new ArrayList<String>();
